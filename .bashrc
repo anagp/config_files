@@ -40,7 +40,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -107,6 +107,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # anagp: support for showing git branches and states
+# anagp: ideas from here ->http://ithaca.arpinum.org/2013/01/02/git-prompt.html
 
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWDIRTYSTATE=1
@@ -115,4 +116,12 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWUPSTREAM="auto git"
 
-PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+#get_dir() {
+#    printf "%s" $(pwd | sed "s:$HOME:~:")
+#}
+
+get_sha() {
+    git rev-parse --short HEAD 2>/dev/null
+}
+
+PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ " " [%s $(get_sha)]"'
