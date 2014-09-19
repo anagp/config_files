@@ -8,3 +8,7 @@ Contains different files used for configuration of systems
 Configures the bash shell. The current version copies the default file in /etc/skel and adds support for a bash promt that shows git status/repository.
 
 source ~/.bashrc needs to be run so that the changes are applied.
+
+vimrc
+-----
+Configures the vim editor. The current version copies the default file in /usr/share/vim/ and adds a little extra.
