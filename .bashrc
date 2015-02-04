@@ -106,6 +106,46 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# anagp: adding a couple of alias
+
+# opens files & urls in folders
+alias xo='xdg-open'
+alias apalog='tail /var/log/apache2/error.log'
+alias syslog='tail /var/log/syslog'
+alias ddbug='more /tmp/drupal_debug.txt'
+alias d='bin/site-drush'
+alias w3='cd /opt/w3'
+alias os='cd /opt/scholar'
+
+function zw(){
+  cd /opt/w3/themes/uib_zen
+  compass watch
+}
+
+function wg(){
+  grep -R -n $1 modules/ themes/
+}
+
+function mg(){
+  grep -R -n $1 modules/
+}
+
+function tg(){
+  grep -R -n $1 themes/
+}
+
+function g(){
+  grep -R -n $1 . 
+}
+
+function ssme(){
+  sshfs $1.uib.no:/var/www/drupal/instances/openscholar /mnt/$1
+}
+
+function ussme(){
+  fusermount -u /mnt/$1
+}
+
 # anagp: support for showing git branches and states
 # anagp: ideas from here ->http://ithaca.arpinum.org/2013/01/02/git-prompt.html
 
@@ -124,4 +164,6 @@ get_sha() {
     git rev-parse --short HEAD 2>/dev/null
 }
 
-PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ " " [%s $(get_sha)]"'
+
+#PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u@\h:\w\[\e[0m\]" "\\\$ " " [%s $(get_sha)]"'
+PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\w\[\e[0m\]" "\\\$ " " [%s $(get_sha)]"'
