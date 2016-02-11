@@ -54,6 +54,9 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 "anagp
+"map Enter and Shift enter to add a line when not in insert mode
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 
 "Set the highlight all searches as default
 set hlsearch
