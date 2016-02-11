@@ -114,8 +114,6 @@ alias apalog='tail /var/log/apache2/error.log'
 alias syslog='tail /var/log/syslog'
 alias ddbug='more /tmp/drupal_debug.txt'
 alias d='bin/site-drush'
-alias w3='cd /opt/w3'
-alias os='cd /opt/scholar'
 
 function zw(){
   cd /opt/w3/themes/uib_zen
@@ -139,11 +137,20 @@ function g(){
 }
 
 function ssme(){
-  sshfs $1.uib.no:/var/www/drupal/instances/openscholar /mnt/$1
+  mkdir -p /mnt/ssme/$1
+  sshfs $1.uib.no:/ /mnt/ssme/$1
+  cd /mnt/ssme/$1
+}
+
+function ossme(){
+  mkdir -p /mnt/ssme/$1 
+  sshfs $1.uib.no:/var/www/drupal/instances/openscholar /mnt/ssme/$1
+  cd /mnt/ssme/$1
 }
 
 function ussme(){
-  fusermount -u /mnt/$1
+  cd ~
+  fusermount -u /mnt/ssme/$1
 }
 
 # anagp: support for showing git branches and states
