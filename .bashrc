@@ -114,6 +114,11 @@
 alias xo='xdg-open'
 alias apalog='tail /var/log/apache2/error.log'
 alias syslog='tail /var/log/syslog'
+# PHP & Laravel
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias composer="php ~/.local/bin/composer.phar"
+
+export LESS='-R'
 
 function g(){
   grep -R -n $1 . 
@@ -129,6 +134,11 @@ function ussme(){
   cd ~
   fusermount -u /mnt/ssme/$1
 }
+
+# Tmux as default based on https://unix.stackexchange.com/questions/43601/how-can-i-set-my-default-shell-to-start-up-tmux
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  exec tmux
+#fi
 
 # anagp: support for showing git branches and states
 # anagp: ideas from here ->http://ithaca.arpinum.org/2013/01/02/git-prompt.html
@@ -154,11 +164,3 @@ get_sha() {
 #PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u@\h:\w\[\e[0m\]" "\\\$ " " [%s $(get_sha)]"'
 PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u:\w\[\e[0m\]" "\\\$ " "[%s $(get_sha)]\n"'
 
-# Tmux as default based on https://unix.stackexchange.com/questions/43601/how-can-i-set-my-default-shell-to-start-up-tmux
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  exec tmux
-#fi
-
-# PHP & Laravel
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
-alias composer="php ~/.local/bin/composer.phar"
