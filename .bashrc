@@ -124,16 +124,16 @@ function g(){
   grep -R -n $1 . 
 }
 
-function ssme(){
-  mkdir -p /mnt/ssme/$1
-  sshfs $1.uib.no:/ /mnt/ssme/$1
-  cd /mnt/ssme/$1
-}
+#function ssme(){
+#  mkdir -p /mnt/ssme/$1
+#  sshfs $1.uib.no:/ /mnt/ssme/$1
+#  cd /mnt/ssme/$1
+#}
 
-function ussme(){
-  cd ~
-  fusermount -u /mnt/ssme/$1
-}
+#function ussme(){
+#  cd ~
+#  fusermount -u /mnt/ssme/$1
+#}
 
 # Tmux as default based on https://unix.stackexchange.com/questions/43601/how-can-i-set-my-default-shell-to-start-up-tmux
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
@@ -163,4 +163,4 @@ get_sha() {
 
 #PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u@\h:\w\[\e[0m\]" "\\\$ " " [%s $(get_sha)]"'
 PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u:\w\[\e[0m\]" "\\\$ " "[%s $(get_sha)]\n"'
-
+alias ana="make -f ana.Makefile"
