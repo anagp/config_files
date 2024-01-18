@@ -164,3 +164,16 @@ get_sha() {
 #PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u@\h:\w\[\e[0m\]" "\\\$ " " [%s $(get_sha)]"'
 PROMPT_COMMAND='__git_ps1 "\[\e[0;35m\]\u:\w\[\e[0m\]" "\\\$ " "[%s $(get_sha)]\n"'
 alias ana="make -f ana.Makefile"
+alias homemake="make -f ~/Makefile"
+
+#DID-NOT-WORK Tmux rename window at assh if tmux is running
+#assh() {
+#  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+#    tmux rename-window "$*"
+#    command ssh "$@"
+#    tmux set-window-option automatic-rename "on" 1>/dev/null
+#  else
+#    command ssh "$@"
+#  fi
+#}
+
