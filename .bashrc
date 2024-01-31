@@ -154,6 +154,15 @@ get_sha() {
     git rev-parse --short HEAD 2>/dev/null
 }
 
+tssh() {
+    if [ "$#" -eq 1 ]; then
+        tmux rename-window $1; ssh ana@$1;
+    elif [ "$#" -eq 2 ]; then
+        tmux rename-window $1; ssh $2@$1;
+    else
+        echo "Usage: tssh <host> [username]"
+    fi
+}
 # [\e[0;35m\] starts a colour
 # [\e[0m\] goes back to terminal front colour
 # \u user

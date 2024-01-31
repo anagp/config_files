@@ -1,4 +1,3 @@
--include ~/ana_vars.Makefile
 
 ssme:
 	sshuttle -r $(me)@p1dlplogin $(uib_ips)
@@ -16,4 +15,11 @@ docker_internet_stop:
 	sudo iptables -I DOCKER-USER -i eth0 ! -s 172.18.0.0/16 -j DROP
 
 banana:
-	echo "banana"
+	echo $(ana_host)
+
+reiptables:
+	[ -f  ~/ana_docker_iptables_rules.txt ] && sudo iptables-restore < ~/ana_docker_iptables_rules.txt
+
+anassh:
+	tmux select-pane -T $(ana_host)
+	ssh -4 ana@$(ana_host)
